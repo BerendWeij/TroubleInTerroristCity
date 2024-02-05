@@ -1,27 +1,25 @@
-// Designed by Kinemation, 2023
+// Designed by KINEMATION, 2023
 
-using UnityEngine;
 using Kinemation.FPSFramework.Runtime.Core.Types;
 using Kinemation.FPSFramework.Runtime.Recoil;
+
+using UnityEngine;
 
 namespace Kinemation.FPSFramework.Runtime.FPSAnimator
 {
     public abstract class FPSAnimWeapon : MonoBehaviour
     {
-        public WeaponAnimData gunData = new(LocRot.identity);
-        public AimOffsetTable aimOffsetTable;
-        public RecoilAnimData recoilData;
-    
-        public FireMode fireMode;
-        public float fireRate;
-        public int burstAmount;
-        public AnimSequence overlayPose;
-        public LocRot weaponBone = LocRot.identity;
+        public WeaponAnimAsset weaponAsset;
+        public WeaponTransformData weaponTransformData;
+
+        public FireMode fireMode = FireMode.Semi;
+        public float fireRate = 600f;
+        public int burstAmount = 0;
 
         // Returns the aim point by default
         public virtual Transform GetAimPoint()
         {
-            return gunData.gunAimData.aimPoint;
+            return weaponTransformData.aimPoint;
         }
 
 #if UNITY_EDITOR
@@ -39,26 +37,26 @@ namespace Kinemation.FPSFramework.Runtime.FPSAnimator
 
                 return null;
             }
-
-            if (gunData.gunAimData.pivotPoint == null)
+            
+            if (weaponTransformData.pivotPoint == null)
             {
-                var found = FindPoint(transform, "pivotpoint");
-                gunData.gunAimData.pivotPoint = found == null ? new GameObject("PivotPoint").transform : found;
-                gunData.gunAimData.pivotPoint.parent = transform;
+                var found = FindPoint(transform, "pivot");
+                weaponTransformData.pivotPoint = found == null ? new GameObject("PivotPoint").transform : found;
+                weaponTransformData.pivotPoint.parent = transform;
             }
-
-            if (gunData.gunAimData.aimPoint == null)
+            
+            if (weaponTransformData.aimPoint == null)
             {
                 var found = FindPoint(transform, "aimpoint");
-                gunData.gunAimData.aimPoint = found == null ? new GameObject("AimPoint").transform : found;
-                gunData.gunAimData.aimPoint.parent = transform;
+                weaponTransformData.aimPoint = found == null ? new GameObject("AimPoint").transform : found;
+                weaponTransformData.aimPoint.parent = transform;
             }
         }
 
         public void SavePose()
         {
-            weaponBone.position = transform.localPosition;
-            weaponBone.rotation = transform.localRotation;
+            //weaponBone.position = transform.localPosition;
+            //weaponBone.rotation = transform.localRotation;
         }
 #endif
     }

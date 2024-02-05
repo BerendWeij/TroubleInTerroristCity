@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1291dd7b495cd084e87eb81b1698142f, type: 3}
+  m_Name: Unarmed
+  m_EditorClassIdentifier: 
+  General:
+    UseWhileAirborne: 0
+    UseWhileRunning: 0
+    CanStopReloading: 0
+    CrosshairID: 0
+    StaminaTakePerUse: 0
+    MovementSpeedMod: 1
+    overlayType: 1
+  Equipping:
+    Duration: 0.6
+    AnimationSpeed: 1
+    Audio: []
+  Unequipping:
+    Duration: 0.6
+    AnimationSpeed: 1
+    Audio: []
+  Aiming:
+    Enabled: 0
+    AimThreshold: 0
+    AimCamHeadbobMod: 0
+    AimMovementSpeedMod: 0
+    AimWhileAirborne: 0
+    UseAimBlur: 0
+    AimSounds:
+      m_Clips: []
+      m_VolumeRange: {x: 0.5, y: 0.75}
+      m_PitchRange: {x: 0.9, y: 1.1}
+      m_VolumeMultiplier: 1
+  MeleeSettings:
+    HitMask:
+      serializedVersion: 2
+      m_Bits: 0
+    MaxHitDistance: 1.5
+    ImpactEffect: 4
+    DamageType: 2
+    CanContinuouslyAttack: 0
+    ResetSwingsIfNotUsed: 0
+    ResetSwingsDelay: 1
+    SwingSelection: 1
+    Swings:
+    - SwingName: 213
+      Cooldown: 0
+      CastDelay: 0
+      CastRadius: 0
+      HitDamage: 0
+      HitImpact: 0
+      AnimationIndex: 0
+      AnimationSpeed: 0
+      SwingAudio:
+        Delay: 0
+        Sound:
+          m_Clips: []
+          m_VolumeRange: {x: 0, y: 0}
+          m_PitchRange: {x: 0, y: 0}
+          m_VolumeMultiplier: 0
+      HitAudio:
+        Delay: 0
+        Sound:
+          m_Clips: []
+          m_VolumeRange: {x: 0, y: 0}
+          m_PitchRange: {x: 0, y: 0}
+          m_VolumeMultiplier: 0
+  UnarmedSettings:
+    AlwaysShowArms: 0
+    ArmsShowDuration: 3
+    ShowArmsAudio:
+      Delay: 0
+      Sound:
+        m_Clips: []
+        m_VolumeRange: {x: 0.5, y: 0.75}
+        m_PitchRange: {x: 0.9, y: 1.1}
+        m_VolumeMultiplier: 1
+    RunAnimSpeed: 1
+    RunAnimStartTime: 0.5

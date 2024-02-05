@@ -62,7 +62,7 @@ MonoBehaviour:
       m_VolumeRange: {x: 0.5, y: 0.75}
       m_PitchRange: {x: 0.9, y: 1.1}
       m_VolumeMultiplier: 0.5
-    VisualEffect: {fileID: 3627271802309641621, guid: 08dddc0be82d66f4a8c95e63000eec40, type: 3}
+    VisualEffect: {fileID: 1400400831016474, guid: de7cee16336e9e94e9faa00d2d126b0e, type: 3}
   SlashEffect:
     AudioEffect:
       m_Clips:

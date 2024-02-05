@@ -1,6 +1,5 @@
-// Designed by Kinemation, 2023
+// Designed by KINEMATION, 2023
 
-using Kinemation.FPSFramework.Runtime.FPSAnimator;
 using UnityEngine;
 
 namespace Kinemation.FPSFramework.Runtime.Recoil

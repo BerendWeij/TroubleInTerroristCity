@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemPickup : InteractiveObject
@@ -17,6 +15,7 @@ public class ItemPickup : InteractiveObject
 	[BHeader("Item", true, order = 100)]
 
 	[SerializeField]
+	[DatabaseItem]
 	protected string m_Item = string.Empty;
 
 	[SerializeField]
@@ -40,10 +39,10 @@ public class ItemPickup : InteractiveObject
 	[Space]
 
 	[SerializeField]
-	protected Color m_BaseMessageColor = new Color(1f, 1f, 1f, 0.678f);
+	protected Color m_BaseMessageColor = new(1f, 1f, 1f, 0.678f);
 
 	[SerializeField]
-	protected Color m_ItemCountColor = new Color(0.976f, 0.6f, 0.129f, 1f);
+	protected Color m_ItemCountColor = new(0.976f, 0.6f, 0.129f, 1f);
 
 	[SerializeField]
 	protected Color m_InventoryFullColor = Color.red;
@@ -52,11 +51,11 @@ public class ItemPickup : InteractiveObject
 	private string m_InitialInteractionText;
 
 
-	public override void OnInteractionEnd(Humanoid humanoid)
+	public override void OnInteractionEnd(Player player)
 	{
-		TryPickUp(humanoid, InteractionProgress.Get());
+		TryPickUp(player, InteractionProgress.Get());
 
-		base.OnInteractionEnd(humanoid);
+		base.OnInteractionEnd(player);
 	}
 
 	public void SetItem(Item item)
@@ -78,9 +77,7 @@ public class ItemPickup : InteractiveObject
 
 		if (m_PickUpMethod != PickUpMethod.InteractionBased)
 			InteractionEnabled = false;
-
-		m_ItemInstance = GetComponent<Item>();
-		/*
+		
 		if (ItemDatabase.TryGetItemByName(m_Item, out ItemInfo itemInfo))
 		{
 			m_ItemInstance = new Item(itemInfo, m_ItemCount);
@@ -97,7 +94,7 @@ public class ItemPickup : InteractiveObject
 				SetInteractionText(m_ItemInstance);
 		}
 		else
-			InteractionEnabled = false;*/
+			InteractionEnabled = false;
 	}
 
 	protected virtual void TryPickUp(Humanoid humanoid, float interactProgress)
@@ -107,7 +104,7 @@ public class ItemPickup : InteractiveObject
 			// Item added to inventory
 			if (humanoid.Inventory.AddItem(m_ItemInstance, m_TargetContainers))
 			{
-				if (m_ItemInstance.StackSize > 1)
+				if (m_ItemInstance.Info.StackSize > 1)
 					print("");
 				//UI_MessageDisplayer.Instance.PushMessage(string.Format("Picked up <color={0}>{1}</color> x {2}", ColorUtils.ColorToHex(m_ItemCountColor), m_ItemInstance.Name, m_ItemInstance.CurrentStackSize), m_BaseMessageColor);
 				else
@@ -117,15 +114,11 @@ public class ItemPickup : InteractiveObject
 				Destroy(gameObject);
 			}
 			// Item not added to inventory
-			else
-			{
-				//UI_MessageDisplayer.Instance.PushMessage(string.Format("<color={0}>Inventory Full</color>", ColorUtils.ColorToHex(m_InventoryFullColor)), m_BaseMessageColor);
-			}
+			//UI_MessageDisplayer.Instance.PushMessage(string.Format("<color={0}>Inventory Full</color>", ColorUtils.ColorToHex(m_InventoryFullColor)), m_BaseMessageColor);
 		}
 		else
 		{
 			Debug.LogError("Item Instance is null, can't pick up anything.");
-			return;
 		}
 	}
 

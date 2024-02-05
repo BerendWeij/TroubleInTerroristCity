@@ -13,7 +13,7 @@ public class Activity
     private event Action m_StartCallbacks;
     private event Action m_StopCallbacks;
 
-    private bool m_Active = false;
+    protected bool m_Active;
 
     /// <summary>
     /// Will be called when this activity starts.
@@ -81,8 +81,8 @@ public class Activity
 
             return activityStarted;
         }
-        else
-            Debug.LogWarning("[Activity] - You tried to start an activity which has no tryer (if no one checks if the activity can start, it won't start).");
+
+        Debug.LogWarning("[Activity] - You tried to start an activity which has no tryer (if no one checks if the activity can start, it won't start).");
 
         return false;
     }
@@ -185,7 +185,7 @@ public class Activity<T>
 
     private T m_Parameter;
 
-    private bool m_Active = false;
+    private bool m_Active;
 
 
     public void SetStartTryer(ActivityTryerDelegate tryer)
@@ -258,8 +258,8 @@ public class Activity<T>
 
             return activityStarted;
         }
-        else
-            Debug.LogWarning("[Activity] - You tried to start an activity which has no tryer (if no one checks if the activity can start, it won't start).");
+
+        Debug.LogWarning("[Activity] - You tried to start an activity which has no tryer (if no one checks if the activity can start, it won't start).");
 
         return false;
     }

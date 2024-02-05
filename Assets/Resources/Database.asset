@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae80e31a532f4cf4985cd82b10ddcfb1, type: 3}
+  m_Name: Database
+  m_EditorClassIdentifier: 
+  m_Categories:
+  - m_Name: Pistol
+    m_Items:
+    - m_Name: SilencedPistol
+      m_Id: -4214810
+      m_Category: Pistol
+      m_Icon: {fileID: 21300000, guid: 9bcfcbdd82e7fa74d8ebd3ce1c1de451, type: 3}
+      m_Description: 
+      m_Pickup: {fileID: 2934354455126241283, guid: eff1b59b2142e3748a8803e4bc638b92, type: 3}
+      m_Model: {fileID: 0}
+      m_StackSize: 1
+      m_Properties:
+        m_List:
+        - m_Name: Ammo
+          m_Type: 1
+          m_FixedValue: 7
+          m_UseRandomValue: 0
+          m_RandomValueRange: {x: 0, y: 0}
+  - m_Name: Primary
+    m_Items:
+    - m_Name: Vector
+      m_Id: 6595530
+      m_Category: Primary
+      m_Icon: {fileID: 21300000, guid: c25913f4b723da841b7a16b759a6f86d, type: 3}
+      m_Description: piew
+      m_Pickup: {fileID: 7809316921128779825, guid: 468a4af651a8e9c46a34566652bf5a68, type: 3}
+      m_Model: {fileID: 3174257466599879320, guid: 6da8410a2c672d04aa291541beac8561, type: 3}
+      m_StackSize: 1
+      m_Properties:
+        m_List:
+        - m_Name: Ammo
+          m_Type: 1
+          m_FixedValue: 30
+          m_UseRandomValue: 0
+          m_RandomValueRange: {x: 0, y: 0}
+    - m_Name: Tommy
+      m_Id: -6999953
+      m_Category: Primary
+      m_Icon: {fileID: 21300000, guid: 810441661d0a5aa48beb03c28f6273f7, type: 3}
+      m_Description: piew
+      m_Pickup: {fileID: 7206119279090650357, guid: c54ae7b927aa3754bb416b125318a7e5, type: 3}
+      m_Model: {fileID: 4704455198944539947, guid: d6daf20fd0e3b694ab277cb540399db7, type: 3}
+      m_StackSize: 1
+      m_Properties:
+        m_List:
+        - m_Name: Ammo
+          m_Type: 1
+          m_FixedValue: 30
+          m_UseRandomValue: 0
+          m_RandomValueRange: {x: 0, y: 0}
+    - m_Name: AR15
+      m_Id: -4543909
+      m_Category: Primary
+      m_Icon: {fileID: 21300000, guid: ad3f397d16532ce4abe25e6516661a27, type: 3}
+      m_Description: piew
+      m_Pickup: {fileID: 722514603324043150, guid: 0f12e2a5510a3fa41b60f5fd29f05605, type: 3}
+      m_Model: {fileID: 8670834170760051729, guid: 2379eaa7eaba0104090d5deafcd181fe, type: 3}
+      m_StackSize: 1
+      m_Properties:
+        m_List:
+        - m_Name: Ammo
+          m_Type: 1
+          m_FixedValue: 30
+          m_UseRandomValue: 0
+          m_RandomValueRange: {x: 0, y: 0}
+    - m_Name: GrenadeLauncher
+      m_Id: -4979178
+      m_Category: Primary
+      m_Icon: {fileID: 21300000, guid: ad3f397d16532ce4abe25e6516661a27, type: 3}
+      m_Description: piew
+      m_Pickup: {fileID: 5161930832920529412, guid: 736167e8d002750488abf311dc292b98, type: 3}
+      m_Model: {fileID: 7420662808882850434, guid: ee51189e453b677478685bf24e1965c7, type: 3}
+      m_StackSize: 1
+      m_Properties:
+        m_List:
+        - m_Name: Ammo
+          m_Type: 1
+          m_FixedValue: 3
+          m_UseRandomValue: 0
+          m_RandomValueRange: {x: 0, y: 0}
+  m_ItemProperties:
+    m_List:
+    - Name: Ammo
+      Type: 1

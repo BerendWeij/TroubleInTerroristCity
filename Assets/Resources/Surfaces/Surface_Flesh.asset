@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5f455fef6aaad459434bb61682f7d4, type: 3}
+  m_Name: Surface_Flesh
+  m_EditorClassIdentifier: 
+  RegisteredTextures:
+  - {fileID: 2800000, guid: a5d5db9a1841e8b4aaa63c2372c05a13, type: 3}
+  - {fileID: 2800000, guid: 1afc9e6166a2c644c844c48d6b531aa6, type: 3}
+  - {fileID: 2800000, guid: d86dea0338b3bcb469e85fa80a1001cd, type: 3}
+  - {fileID: 2800000, guid: 6f55d054089bf98498a9ed2da74c2f76, type: 3}
+  - {fileID: 2800000, guid: cc710b2e09d604743a47ad2ba1840f27, type: 3}
+  - {fileID: 2800000, guid: 4491adbe2f46af6448febddcde1688fe, type: 3}
+  - {fileID: 2800000, guid: 3b5ec74bb995b4040adb9d0c188bfd48, type: 3}
+  SoftFootstepEffect:
+    AudioEffect:
+      m_Clips: []
+      m_VolumeRange: {x: 0.5, y: 0.75}
+      m_PitchRange: {x: 0.9, y: 1.1}
+      m_VolumeMultiplier: 1
+    VisualEffect: {fileID: 0}
+  HardFootstepEffect:
+    AudioEffect:
+      m_Clips: []
+      m_VolumeRange: {x: 0.5, y: 0.75}
+      m_PitchRange: {x: 0.9, y: 1.1}
+      m_VolumeMultiplier: 1
+    VisualEffect: {fileID: 0}
+  FallImpactEffect:
+    AudioEffect:
+      m_Clips: []
+      m_VolumeRange: {x: 0.5, y: 0.75}
+      m_PitchRange: {x: 0.9, y: 1.1}
+      m_VolumeMultiplier: 1
+    VisualEffect: {fileID: 0}
+  BulletHitEffect:
+    AudioEffect:
+      m_Clips: []
+      m_VolumeRange: {x: 0.5, y: 0.75}
+      m_PitchRange: {x: 0.9, y: 1.1}
+      m_VolumeMultiplier: 1
+    VisualEffect: {fileID: 6460140381910200287, guid: 2adfd21a27490514fa1d39781456e25c, type: 3}
+  SlashEffect:
+    AudioEffect:
+      m_Clips: []
+      m_VolumeRange: {x: 0.5, y: 0.75}
+      m_PitchRange: {x: 0.9, y: 1.1}
+      m_VolumeMultiplier: 1
+    VisualEffect: {fileID: 0}
+  StabEffect:
+    AudioEffect:
+      m_Clips: []
+      m_VolumeRange: {x: 0.5, y: 0.75}
+      m_PitchRange: {x: 0.9, y: 1.1}
+      m_VolumeMultiplier: 1
+    VisualEffect: {fileID: 0}

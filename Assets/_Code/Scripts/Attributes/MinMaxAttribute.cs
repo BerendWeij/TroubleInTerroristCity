@@ -2,9 +2,9 @@
 
 public class MinMaxAttribute : PropertyAttribute
 {
-    public float MinLimit = 0;
+    public float MinLimit;
     public float MaxLimit = 1;
-    public bool DrawRangeValue = false;
+    public bool DrawRangeValue;
 
     public MinMaxAttribute(float min, float max, bool drawRangeValue = true)
     {

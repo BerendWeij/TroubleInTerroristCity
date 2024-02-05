@@ -1,11 +1,9 @@
-﻿// Designed by Kinemation, 2023
+﻿// Designed by KINEMATION, 2023
 
+using Kinemation.FPSFramework.Runtime.Attributes;
 using UnityEngine;
 
-using Kinemation.FPSFramework.Runtime.Camera;
-using Kinemation.FPSFramework.Runtime.Core.Types;
-
-namespace Kinemation.FPSFramework.Runtime.FPSAnimator
+namespace Kinemation.FPSFramework.Runtime.Camera
 {
     [CreateAssetMenu(fileName = "NewCameraShake", menuName = "FPS Animator/FPSCameraShake")]
     public class FPSCameraShake : ScriptableObject

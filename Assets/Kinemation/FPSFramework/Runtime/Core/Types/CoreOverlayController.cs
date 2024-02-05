@@ -1,11 +1,11 @@
-// Designed by Kinemation, 2023
+// Designed by KINEMATION, 2023
 
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 
-namespace Kinemation.FPSFramework.Runtime.Core.Types
+namespace Kinemation.FPSFramework.Runtime.Core.Playables
 {
     public struct CoreOverlayController
     {

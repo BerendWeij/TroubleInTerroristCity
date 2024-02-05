@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class ItemProperty
 {
-    public Message<ItemProperty> Changed = new Message<ItemProperty>();
+    public Message<ItemProperty> Changed = new();
 
     public string Name { get => m_Name; }
     public ItemPropertyType Type { get => m_Type; }
@@ -20,7 +18,7 @@ public class ItemProperty
         set
         {
             if (m_Type == ItemPropertyType.Boolean)
-                SetInternalValue(value == true ? 1 : 0);
+                SetInternalValue(value ? 1 : 0);
         }
     }
 
@@ -73,13 +71,13 @@ public class ItemProperty
     private float m_Value;
 
 
-    //public ItemProperty(ItemPropertyInfo propertyInfo)
-    //{
-    //    m_Name = propertyInfo.Name;
-    //    m_Type = propertyInfo.Type;
+    public ItemProperty(ItemPropertyInfo propertyInfo)
+    {
+        m_Name = propertyInfo.Name;
+        m_Type = propertyInfo.Type;
 
-    //    m_Value = propertyInfo.GetAsFloat();
-    //}
+        m_Value = propertyInfo.GetAsFloat();
+    }
 
     public ItemProperty GetMemberwiseClone()
     {

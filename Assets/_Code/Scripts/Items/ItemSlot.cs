@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum SlotChangeType
@@ -14,7 +12,7 @@ public enum SlotChangeType
 public class ItemSlot
 {
 	/// <summary>Sent when this slot has changed (e.g. when the item has changed).</summary>
-	public Message<ItemSlot, SlotChangeType> Changed = new Message<ItemSlot, SlotChangeType>();
+	public Message<ItemSlot, SlotChangeType> Changed = new();
 
 	public bool HasItem { get { return Item != null; } }
 	public Item Item { get { return m_Item; } }
@@ -91,17 +89,17 @@ public class ItemSlot
 
 	public int AddToStack(int amount)
 	{
-		if (!HasItem || Item.StackSize <= 1)
+		if (!HasItem || Item.Info.StackSize <= 1)
 			return 0;
 
 		int oldStackCount = Item.CurrentStackSize;
-		int surplus = amount + oldStackCount - Item.StackSize;
+		int surplus = amount + oldStackCount - Item.Info.StackSize;
 		int currentStackCount = oldStackCount;
 
 		if (surplus <= 0)
 			currentStackCount += amount;
 		else
-			currentStackCount = Item.StackSize;
+			currentStackCount = Item.Info.StackSize;
 
 		Item.CurrentStackSize = currentStackCount;
 

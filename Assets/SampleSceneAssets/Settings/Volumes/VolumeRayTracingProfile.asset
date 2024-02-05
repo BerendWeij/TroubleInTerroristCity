@@ -16,6 +16,9 @@ MonoBehaviour:
   rayBias:
     m_OverrideState: 0
     m_Value: 0.001
+  distantRayBias:
+    m_OverrideState: 0
+    m_Value: 0.001
   extendShadowCulling:
     m_OverrideState: 0
     m_Value: 0
@@ -140,6 +143,9 @@ MonoBehaviour:
     m_Value:
       serializedVersion: 2
       m_Bits: 819
+  specularOcclusion:
+    m_OverrideState: 0
+    m_Value: 0.5
   occluderMotionRejection:
     m_OverrideState: 0
     m_Value: 1

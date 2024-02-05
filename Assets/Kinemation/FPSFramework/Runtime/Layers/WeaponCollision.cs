@@ -1,4 +1,4 @@
-// Designed by Kinemation, 2023
+// Designed by KINEMATION, 2023
 
 using Kinemation.FPSFramework.Runtime.Core.Components;
 using Kinemation.FPSFramework.Runtime.Core.Types;
@@ -9,27 +9,31 @@ namespace Kinemation.FPSFramework.Runtime.Layers
     public class WeaponCollision : AnimLayer
     {
         [SerializeField] protected LayerMask layerMask;
-        
+
         protected Vector3 start;
         protected Vector3 end;
         protected LocRot smoothPose;
+        protected LocRot offsetPose;
 
         private void OnDrawGizmos()
         {
+            if (!drawDebugInfo) return;
+            
             Gizmos.color = Color.green;
             Gizmos.DrawLine(start, end);
         }
 
-        public override void OnAnimUpdate()
+        protected void Trace()
         {
-            float traceLength = GetGunData().blockData.weaponLength;
-            float startOffset = GetGunData().blockData.startOffset;
-            float threshold = GetGunData().blockData.threshold;
-            LocRot restPose = GetGunData().blockData.restPose;
+            var blockData = GetGunAsset().blockData;
+            
+            float traceLength = blockData.weaponLength;
+            float startOffset = blockData.startOffset;
+            float threshold = blockData.threshold;
+            LocRot restPose = blockData.restPose;
             
             start = GetMasterPivot().position - GetMasterPivot().forward * startOffset;
             end = start + GetMasterPivot().forward * traceLength;
-            LocRot offsetPose = new LocRot(Vector3.zero, Quaternion.identity);
             
             if (Physics.Raycast(start, GetMasterPivot().forward, out RaycastHit hit, traceLength, layerMask))
             {
@@ -44,13 +48,21 @@ namespace Kinemation.FPSFramework.Runtime.Layers
                     offsetPose.rotation = Quaternion.Euler(0f, 0f, 15f * (distance / threshold));
                 }
             }
-
+            else
+            {
+                offsetPose = LocRot.identity;
+            }
+        }
+        
+        public override void OnAnimUpdate()
+        {
+            if (GetGunAsset() == null) return;
+            
+            Trace();
             smoothPose = CoreToolkitLib.Glerp(smoothPose, offsetPose, 10f);
             
-            CoreToolkitLib.MoveInBoneSpace(GetMasterPivot(), GetMasterPivot(), smoothPose.position, 
-                smoothLayerAlpha);
-            CoreToolkitLib.RotateInBoneSpace(GetMasterPivot().rotation, GetMasterPivot(), smoothPose.rotation, 
-                smoothLayerAlpha);
+            GetMasterIK().Move(smoothPose.position, smoothLayerAlpha);
+            GetMasterIK().Rotate(smoothPose.rotation, smoothLayerAlpha);
         }
     }
 }

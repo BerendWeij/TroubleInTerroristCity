@@ -35,19 +35,12 @@ namespace Kinemation.FPSFramework.Runtime.Camera
         // Should be applied after camera stabilization logic
         private void LateUpdate()
         {
-            // Interpolate
-            _target = CoreToolkitLib.SpringInterp(_target, Vector3.zero, ref shakeProfile.springData);
-            _dampedTarget = CoreToolkitLib.Glerp(_dampedTarget, _target, shakeProfile.dampSpeed);
-            
-            _deltaDampedTarget = Quaternion.Inverse(_deltaDampedTarget) * Quaternion.Euler(_dampedTarget);
-            transform.rotation *= _deltaDampedTarget;
-
-            _deltaDampedTarget = Quaternion.Euler(_dampedTarget);
+            Debug.LogWarning("SpringCameraShake is obsolete!");
         }
 
         public void PlayCameraShake()
         {
-            _target = shakeProfile.GetRandomTarget();
+            Debug.LogWarning("SpringCameraShake is obsolete!");
         }
     }
 }

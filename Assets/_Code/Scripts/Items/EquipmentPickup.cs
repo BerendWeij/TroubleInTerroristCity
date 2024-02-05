@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EquipmentPickup : ItemPickup
 {
+	public UnityEvent PickedUpEquipment;
+	
 	protected override void TryPickUp(Humanoid humanoid, float interactProgress)
 	{
 		if (m_ItemInstance != null)
@@ -11,42 +12,29 @@ public class EquipmentPickup : ItemPickup
 			// Check if this Item is swappable
 			if (interactProgress > 0.45f && humanoid.SwapItem.Try(m_ItemInstance))
             {
-				//Destroy(gameObject);
-				gameObject.transform.SetParent(humanoid.Inventory.gameObject.transform);
-				gameObject.SetActive(false);
+				//PickedUpEquipment.Invoke();
+				//gameObject.SetActive(false);
 				print("swap to " + m_ItemInstance.Name);
 			}
 			else
 			{
 				bool addedItem;
-				// If the currently equipped item is null,
-				// get the attached slot
-				if (humanoid.EquippedItem.Get() == null)
-				{
-					var itemContainer = humanoid.Inventory.GetContainerWithFlags(m_TargetContainers);
-					var selectedSlot = itemContainer.Slots[itemContainer.SelectedSlot.Get()];
 
-					if (selectedSlot.Item == null)
-						selectedSlot.SetItem(m_ItemInstance);
+				addedItem = humanoid.Inventory.AddItem(m_ItemInstance, m_TargetContainers); 
+					
 
-					addedItem = true;
-				}
-				else
-					addedItem = humanoid.Inventory.AddItem(m_ItemInstance, m_TargetContainers);
-
+				
 				// Item added to inventory
 				if (addedItem)
 				{
-					if (m_ItemInstance.StackSize > 1)
-						print("pickup " + m_ItemInstance.name);
+					if (m_ItemInstance.Info.StackSize > 1)
+						print("pickup " + m_ItemInstance.Name);
 					//UI_MessageDisplayer.Instance.PushMessage(string.Format("Picked up <color={0}>{1}</color> x {2}", ColorUtils.ColorToHex(m_ItemCountColor), m_ItemInstance.Name, m_ItemInstance.CurrentStackSize), m_BaseMessageColor);
 					else
-						print("pickup " + m_ItemInstance.name);
+						print("pickup " + m_ItemInstance.Name);
 					//UI_MessageDisplayer.Instance.PushMessage(string.Format("Picked up <color={0}>{1}</color>", ColorUtils.ColorToHex(m_ItemCountColor), m_ItemInstance.Name), m_BaseMessageColor);
-
-					//Destroy(gameObject);
-					gameObject.transform.SetParent(humanoid.Inventory.gameObject.transform);
-					gameObject.SetActive(false);
+					
+					PickedUpEquipment.Invoke();
 				}
 				// Item not added to inventory
 				else
@@ -59,7 +47,6 @@ public class EquipmentPickup : ItemPickup
 		else
 		{
 			Debug.LogError("Item Instance is null, can't pick up anything.");
-			return;
 		}
 	}
 }

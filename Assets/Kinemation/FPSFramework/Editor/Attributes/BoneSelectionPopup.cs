@@ -1,7 +1,8 @@
-// Designed by Kinemation, 2023
+// Designed by KINEMATION, 2023
 
 using System.Collections.Generic;
 using System.IO;
+using Kinemation.FPSFramework.Runtime.Core.Types;
 using Kinemation.FPSFramework.Runtime.FPSAnimator;
 using UnityEditor;
 using UnityEngine;
@@ -87,7 +88,7 @@ namespace Kinemation.FPSFramework.Editor.Attributes
                 }
             }
         }
-        
+
         private static void CreateEmptyAnimSequence()
         {
             var path = AssetDatabase.GetAssetPath(Selection.activeInstanceID);

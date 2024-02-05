@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,23 +12,19 @@ public class ItemGenerator
         Random
     }
 
-    [SerializeField]
-    public Method GenerateMethod = Method.Specific;
+    [SerializeField] public Method GenerateMethod = Method.Specific;
 
-    [SerializeField]
-    public string Category = null;
+    [DatabaseCategory] [SerializeField] public string Category;
 
-    [SerializeField]
-    public string Name = null;
+    [DatabaseItem] [SerializeField] public string Name;
 
-    [SerializeField]
-    [MinMax(1, 100, false)]
-    private Vector2Int CountRange = new Vector2Int(1, 100);
+    [SerializeField] [MinMax(1, 100, false)]
+    private Vector2Int CountRange = new(1, 100);
 
 
     public int GetRandomCount()
     {
-        return Mathf.Clamp((int)Random.Range(CountRange.x, CountRange.y + 1), 1, 100);
+        return Mathf.Clamp(Random.Range(CountRange.x, CountRange.y + 1), 1, 100);
     }
 }
 
@@ -42,13 +36,10 @@ public class StartupInventory : EntityComponent
     {
         public string Name;
 
-        [Space]
-
-        public List<Item> StartupItems = null;
+        [Space] public ItemGeneratorList StartupItems;
     }
 
-    [SerializeField]
-    private ItemContainerStartupItems[] m_ItemContainersStartupItems;
+    [SerializeField] private ItemContainerStartupItems[] m_ItemContainersStartupItems;
 
 
     public override void OnEntityStart() => AddItemsToInventory();
@@ -56,40 +47,51 @@ public class StartupInventory : EntityComponent
     private void AddItemsToInventory()
     {
         Inventory inventory = GetComponent<Inventory>();
+
         if (inventory != null)
         {
             foreach (var container in m_ItemContainersStartupItems)
             {
                 ItemContainer itemContainer = inventory.GetContainerWithName(container.Name);
+
                 if (itemContainer != null)
                 {
                     foreach (var item in container.StartupItems)
                     {
-                        //if (item.GenerateMethod == ItemGenerator.Method.Specific)
-                        //    itemContainer.AddItem(item.Name, item.GetRandomCount());
-                        //else if (item.GenerateMethod == ItemGenerator.Method.RandomFromCategory)
-                        //{
-                        //    ItemInfo itemInfo = ItemDatabase.GetRandomItemFromCategory(item.Category);
+                        if (item.GenerateMethod == ItemGenerator.Method.Specific)
+                            itemContainer.AddItem(item.Name, item.GetRandomCount());
+                        else if (item.GenerateMethod == ItemGenerator.Method.RandomFromCategory)
+                        {
+                            ItemInfo itemInfo = ItemDatabase.GetRandomItemFromCategory(item.Category);
 
-                        //    if (itemInfo != null)
-                        //        itemContainer.AddItem(itemInfo.Id, item.GetRandomCount());
-                        //}
-                        //else if (item.GenerateMethod == ItemGenerator.Method.Random)
-                        //{
-                        //    var category = ItemDatabase.GetRandomCategory();
+                            if (itemInfo != null)
+                                itemContainer.AddItem(itemInfo.Id, item.GetRandomCount());
+                        }
+                        else if (item.GenerateMethod == ItemGenerator.Method.Random)
+                        {
+                            var category = ItemDatabase.GetRandomCategory();
 
-                        //    if (category != null)
-                        //    {
-                        //        ItemInfo itemInfo = ItemDatabase.GetRandomItemFromCategory(category.Name);
+                            if (category != null)
+                            {
+                                ItemInfo itemInfo = ItemDatabase.GetRandomItemFromCategory(category.Name);
 
-                        //        if (itemInfo != null)
-                        //            itemContainer.AddItem(itemInfo.Id, item.GetRandomCount());
-                        //    }
-                        //}
-                        itemContainer.AddItem(item, 1);
+                                if (itemInfo != null)
+                                    itemContainer.AddItem(itemInfo.Id, item.GetRandomCount());
+                            }
+                        }
                     }
                 }
             }
         }
     }
+}
+
+
+
+[Serializable]
+public class ItemGeneratorList : ReorderableArray<ItemGenerator> { }
+
+public class DatabaseProperty : PropertyAttribute 
+{
+		
 }

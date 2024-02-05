@@ -7,7 +7,7 @@ public class ShowIf : PropertyAttribute
     public readonly string m_PropertyName;
     public readonly float m_Indentation;
 
-    public readonly bool m_RequiredBool = false;
+    public readonly bool m_RequiredBool;
     public readonly int m_RequiredInt = -1;
 
 

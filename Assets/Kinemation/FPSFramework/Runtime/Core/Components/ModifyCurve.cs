@@ -1,4 +1,4 @@
-// Designed by Kinemation, 2023
+// Designed by KINEMATION, 2023
 
 using UnityEngine;
 

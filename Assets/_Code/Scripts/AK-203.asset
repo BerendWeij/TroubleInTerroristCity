@@ -20,11 +20,11 @@ MonoBehaviour:
     StaminaTakePerUse: 0
     MovementSpeedMod: 1
   Equipping:
-    Duration: 0.6
+    Duration: 0.2
     AnimationSpeed: 1
     Audio: []
   Unequipping:
-    Duration: 0.6
+    Duration: 0.2
     AnimationSpeed: 1
     Audio: []
   Aiming:
@@ -100,14 +100,14 @@ MonoBehaviour:
     BurstLength: 3
     BurstDuration: 0.3
     BurstPause: 0.2
-    RoundsPerMinute: 450
+    RoundsPerMinute: 700
     HasDryFireAnim: 0
     HasAlternativeFireAnim: 0
     FireAnimationSpeed: 1
     ShootAudio:
       m_Clips:
-      - {fileID: 8300000, guid: 3cc7d2fa1e3c8204cb90cf750dcc6fa0, type: 3}
       - {fileID: 8300000, guid: 3d32defdd09e2e044984e4d02afbe1a7, type: 3}
+      - {fileID: 8300000, guid: 3cc7d2fa1e3c8204cb90cf750dcc6fa0, type: 3}
       m_VolumeRange: {x: 0.95, y: 0.96}
       m_PitchRange: {x: 0.9, y: 1.05}
       m_VolumeMultiplier: 0.8
@@ -135,11 +135,11 @@ MonoBehaviour:
     - Delay: 0.7
       Sound:
         m_Clips:
-        - {fileID: 8300000, guid: 38fbdc72c97a2ad4ab876cecfc62701e, type: 3}
-        - {fileID: 8300000, guid: f1db6630a910cf94485de3b65d4a8d67, type: 3}
-        - {fileID: 8300000, guid: 4bb85b09ed0bf484c98e550c60bc9e4c, type: 3}
-        - {fileID: 8300000, guid: 575c4e2899cf99c4e93358cea2c31cfd, type: 3}
         - {fileID: 8300000, guid: 66cde499edbacbf42acbd4119ad8143b, type: 3}
+        - {fileID: 8300000, guid: 38fbdc72c97a2ad4ab876cecfc62701e, type: 3}
+        - {fileID: 8300000, guid: 4bb85b09ed0bf484c98e550c60bc9e4c, type: 3}
+        - {fileID: 8300000, guid: f1db6630a910cf94485de3b65d4a8d67, type: 3}
+        - {fileID: 8300000, guid: 575c4e2899cf99c4e93358cea2c31cfd, type: 3}
         m_VolumeRange: {x: 0.5, y: 0.65}
         m_PitchRange: {x: 0.95, y: 1.05}
         m_VolumeMultiplier: 1
